@@ -15,7 +15,7 @@ pipeline {
         }
         // your other stages...
     }
-    stages {
+    
         stage('Clone Repo') {
             steps {
                 git branch: 'main', url: 'https://github.com/Aditya8586/Docker_Demo_Flask.git'
