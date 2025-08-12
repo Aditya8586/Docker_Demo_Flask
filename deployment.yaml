@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-calculator-deployment
+  labels:
+    app: flask-calculator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask-calculator
+  template:
+    metadata:
+      labels:
+        app: flask-calculator
+    spec:
+      containers:
+        - name: calc
+          image: aditya8823/calc-flaskapp:latest
+          ports:
+            - containerPort: 5000
