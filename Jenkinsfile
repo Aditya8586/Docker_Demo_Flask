@@ -2,14 +2,14 @@ pipeline {
     agent any
 
     environment {
-        DOCKERHUB_CREDENTIALS = credentials('aditya.parashar733@gmail.com')  // Jenkins credentials ID
+        DOCKERHUB_CREDENTIALS = credentials('dockerhub-cred-id')  // Jenkins credentials ID
         DOCKER_IMAGE = "aditya8823/calc"
     }
 
     stages {
         stage('Clone Repo') {
             steps {
-                git branch: 'main', url: 'https://github.com/Aditya8586/Docker_Demo_Flask.git'
+                git branch: 'master', url: 'https://github.com/Aditya8586/Docker_Demo_Flask.git'
             }
         }
 
