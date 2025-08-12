@@ -6,19 +6,16 @@ pipeline {
         DOCKER_IMAGE = "aditya8823/calc"
     }
 
-	  stages {
-        stage('Debug Credentials') {
-            steps {
-                echo "Using credentials ID: dockerhub-cred-id"
-                echo "Docker Hub username: ${env.DOCKERHUB_CREDENTIALS_USR}"
-            }
-        }
-        // your other stages...
-    }
-    
+    stages {
         stage('Clone Repo') {
             steps {
                 git branch: 'main', url: 'https://github.com/Aditya8586/Docker_Demo_Flask.git'
+            }
+        }
+		stage('Debug Credentials') {
+            steps {
+                echo "Using credentials ID: dockerhub-cred-id"
+                echo "Docker Hub username: ${env.DOCKERHUB_CREDENTIALS_USR}"
             }
         }
 
@@ -34,7 +31,6 @@ pipeline {
                 sh "docker push $DOCKER_IMAGE:${BUILD_NUMBER}"
             }
         }
-		
 
         stage('Deploy to Kubernetes') {
             steps {
